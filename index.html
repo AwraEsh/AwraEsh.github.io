@@ -8,6 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
             background-color: #12121b;
             display: flex;
@@ -17,7 +22,7 @@
             height: 100vh;
             width: 100vw;
             overflow: hidden;
-            overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+            overflow-x: hidden;
             margin: 0;
             color: #e0e0e0;
             font-family: 'Poppins', sans-serif;
@@ -30,8 +35,8 @@
             font-weight: 600;
             opacity: 0;
             animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            max-width: 100%; /* جلوگیری از خروج عنوان از صفحه */
-            word-wrap: break-word; /* تنظیم شکستن کلمات برای جلوگیری از بیرون زدن */
+            max-width: 100%;
+            word-wrap: break-word;
         }
 
         .title span {
@@ -54,7 +59,7 @@
             transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
             opacity: 0;
             animation: fadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s;
-            max-width: 100%; /* جلوگیری از بیرون زدن دکمه */
+            max-width: 100%;
         }
 
         .button:hover {
@@ -69,7 +74,6 @@
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
             .title {
                 font-size: 4rem;
@@ -112,14 +116,12 @@
 
     <script>
         document.querySelector('.button').addEventListener('click', function(event) {
-            // جلوگیری از باز شدن لینک بلافاصله
             event.preventDefault();
 
             if (navigator.vibrate) {
-                navigator.vibrate(100); // ویبره به مدت 100 میلی‌ثانیه
+                navigator.vibrate(100);
             }
 
-            // باز کردن لینک بعد از 200 میلی‌ثانیه (زمان ویبره)
             setTimeout(function() {
                 window.location.href = document.querySelector('.button').href;
             }, 200);
