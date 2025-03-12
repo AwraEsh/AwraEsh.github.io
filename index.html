@@ -28,7 +28,7 @@
             font-family: 'Poppins', sans-serif;
             text-align: center;
             padding: 10px;
-            user-select: none; /* جلوگیری از انتخاب متن */
+            user-select: none;
         }
 
         .title {
@@ -38,11 +38,14 @@
             animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             max-width: 100%;
             word-wrap: break-word;
+            display: flex;
+            justify-content: center;
         }
 
         .title span {
             font-size: 2.5rem;
             font-weight: 400;
+            align-self: flex-start;
         }
 
         .button {
@@ -128,13 +131,11 @@
             }, 200);
         });
 
-   
         document.addEventListener('contextmenu', function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
         });
 
         document.addEventListener('keydown', function(event) {
-   
             if (event.ctrlKey && (event.key === 'c' || event.key === 'v')) {
                 event.preventDefault();
             }
