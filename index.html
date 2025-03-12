@@ -28,6 +28,7 @@
             font-family: 'Poppins', sans-serif;
             text-align: center;
             padding: 10px;
+            user-select: none; /* جلوگیری از انتخاب متن */
         }
 
         .title {
@@ -125,6 +126,18 @@
             setTimeout(function() {
                 window.location.href = document.querySelector('.button').href;
             }, 200);
+        });
+
+   
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); 
+        });
+
+        document.addEventListener('keydown', function(event) {
+   
+            if (event.ctrlKey && (event.key === 'c' || event.key === 'v')) {
+                event.preventDefault();
+            }
         });
     </script>
 </body>
