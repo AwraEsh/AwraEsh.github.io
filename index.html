@@ -21,6 +21,7 @@
             color: #e0e0e0;
             font-family: 'Poppins', sans-serif;
             text-align: center;
+            padding: 10px;
         }
 
         .title {
@@ -64,25 +65,25 @@
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Media Queries for Mobile */
+        /* Responsive styles */
         @media (max-width: 768px) {
             .title {
-                font-size: 5rem;
+                font-size: 4rem;
             }
 
             .title span {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .button {
                 font-size: 1rem;
-                padding: 12px 25px;
+                padding: 8px 16px;
             }
         }
 
         @media (max-width: 480px) {
             .title {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
 
             .title span {
@@ -91,7 +92,7 @@
 
             .button {
                 font-size: 0.9rem;
-                padding: 8px 18px;
+                padding: 6px 12px;
             }
         }
     </style>
@@ -104,5 +105,13 @@
     <a href="https://t.me/CallMe_Aw" class="button">
         My Telegram
     </a>
+
+    <script>
+        document.querySelector('.button').addEventListener('click', function() {
+            if (navigator.vibrate) {
+                navigator.vibrate(100); // ویبره به مدت 100 میلی‌ثانیه
+            }
+        });
+    </script>
 </body>
 </html>
