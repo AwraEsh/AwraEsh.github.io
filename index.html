@@ -31,6 +31,13 @@
             user-select: none;
         }
 
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         .title {
             font-size: 7.5rem;
             font-weight: 600;
@@ -124,13 +131,15 @@
     </style>
 </head>
 <body>
-    <div class="title">
-        <span class="im">im</span> <span class="awraesh">AwraEsh</span>
+    <div class="content">
+        <div class="title">
+            <span class="im">im</span> <span class="awraesh">AwraEsh</span>
+        </div>
+
+        <a href="https://t.me/CallMe_Aw" class="button" id="telegramLink">
+            My Telegram
+        </a>
     </div>
-    
-    <a href="https://t.me/CallMe_Aw" class="button" id="telegramLink">
-        My Telegram
-    </a>
 
     <script>
         document.querySelector('.button').addEventListener('click', function(event) {
