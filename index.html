@@ -102,15 +102,23 @@
         <span>im</span> AwraEsh
     </div>
     
-    <a href="https://t.me/CallMe_Aw" class="button">
+    <a href="https://t.me/CallMe_Aw" class="button" id="telegramLink">
         My Telegram
     </a>
 
     <script>
-        document.querySelector('.button').addEventListener('click', function() {
+        document.querySelector('.button').addEventListener('click', function(event) {
+            // جلوگیری از باز شدن لینک بلافاصله
+            event.preventDefault();
+
             if (navigator.vibrate) {
                 navigator.vibrate(100); // ویبره به مدت 100 میلی‌ثانیه
             }
+
+            // باز کردن لینک بعد از 200 میلی‌ثانیه (زمان ویبره)
+            setTimeout(function() {
+                window.location.href = document.querySelector('.button').href;
+            }, 200);
         });
     </script>
 </body>
