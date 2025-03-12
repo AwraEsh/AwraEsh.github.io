@@ -63,6 +63,37 @@
             60% { opacity: 1; transform: translateY(0) scale(1.05); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 5rem;
+            }
+
+            .title span {
+                font-size: 2rem;
+            }
+
+            .button {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 3.5rem;
+            }
+
+            .title span {
+                font-size: 1.5rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 8px 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -70,7 +101,7 @@
         <span>im</span> AwraEsh
     </div>
     
-    <a href="https://t.me/CallMe_Aw" class="button">
+    <a href="https://awraesh.github.io/" class="button">
         My Telegram
     </a>
 </body>
