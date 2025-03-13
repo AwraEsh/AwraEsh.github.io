@@ -6,100 +6,43 @@
     <title>A💀rash</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
         body {
             background: radial-gradient(circle at top, #1e1e2e, #12121b);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            color: #e0e0e0;
-            font-family: 'Inter', sans-serif;
-            text-align: center;
-            padding: 10px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 100vh; width: 100vw; color: #e0e0e0; font-family: 'Inter', sans-serif;
+            text-align: center; padding: 10px; overflow: hidden;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
-
         .title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(4rem, 12vw, 8rem);
-            font-weight: 700;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards, glow 1.5s infinite alternate;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(4rem, 12vw, 8rem); font-weight: 700;
+            opacity: 0; animation: fadeIn 1.5s ease-out forwards;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
-
-        .im {
-            font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 400;
-            margin-right: 10px;
-        }
-
+        .im { font-size: clamp(2rem, 6vw, 3rem); font-weight: 400; margin-right: 10px; }
         .button-container {
-            display: flex;
-            gap: 20px;
-            margin-top: 25px;
-            width: 100%;
-            justify-content: center;
+            display: flex; gap: 20px; margin-top: 25px; width: 100%; justify-content: center;
         }
-
         .button {
-            background: rgba(30, 30, 46, 0.8);
-            color: #fff;
-            font-size: clamp(1.2rem, 3vw, 1.4rem);
-            padding: 16px 32px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.3s ease;
-            min-width: 200px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            background: rgba(30, 30, 46, 0.8); color: #fff; font-size: clamp(1.2rem, 3vw, 1.4rem);
+            padding: 16px 32px; border: none; border-radius: 30px; cursor: pointer; text-decoration: none;
+            transition: all 0.3s ease; min-width: 200px; text-align: center;
+            backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
-
         .button:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.15); }
-            100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.25); }
-        }
-
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (max-width: 768px) {
-            .title { font-size: 6rem; }
+            .title { font-size: clamp(3rem, 10vw, 5rem); }
             .button-container { flex-direction: column; align-items: center; }
-            .button {
-                width: 100%;
-                font-size: 1.5rem;
-                padding: 20px;
-                max-width: 300px;
-                margin: 10px 0;
-            }
+            .button { width: 100%; font-size: 1.5rem; padding: 20px; max-width: 300px; margin: 10px 0; }
         }
-
         @media (max-width: 480px) {
-            .title { font-size: 5rem; }
+            .title { font-size: clamp(2.5rem, 8vw, 4rem); }
             .button { padding: 18px 36px; font-size: 1.3rem; }
         }
     </style>
@@ -113,27 +56,28 @@
         <a href="https://t.me/Ou_Rash" class="button">My Channel</a>
     </div>
     <script>
-        document.querySelectorAll('.button').forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
+        document.querySelectorAll('.button').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
                 if (navigator.vibrate) navigator.vibrate(100);
-                setTimeout(() => window.location.href = this.href, 200);
+                setTimeout(() => window.location.href = btn.href, 200);
             });
         });
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('keydown', event => {
-            if (event.ctrlKey && ['c', 'v'].includes(event.key)) event.preventDefault();
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && ['c', 'v'].includes(e.key)) e.preventDefault();
         });
 
-        document.addEventListener('mousemove', (e) => {
-            requestAnimationFrame(() => {
+        // افکت پارالاکس فقط روی دسکتاپ فعال باشه
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', e => {
                 const title = document.getElementById('title');
-                const x = (e.clientX / window.innerWidth - 0.5) * 10;
-                const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                const x = (e.clientX / window.innerWidth - 0.5) * 15;
+                const y = (e.clientY / window.innerHeight - 0.5) * 15;
                 title.style.transform = `translate(${x}px, ${y}px)`;
             });
-        });
+        }
     </script>
 </body>
 </html>
