@@ -5,29 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>A💀rash</title>
     
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'SF Pro';
-            src: url('https://yourserver.com/fonts/SF-Pro-Display.woff2') format('woff2'),
-                 url('https://yourserver.com/fonts/SF-Pro-Display.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
         body {
             background: radial-gradient(circle at top, #1e1e2e, #12121b);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             height: 100vh; width: 100vw; color: #e0e0e0; text-align: center;
-            padding: 10px; overflow: hidden; backdrop-filter: blur(10px);
-            font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            padding: 10px; overflow: hidden; backdrop-filter: blur(20px);
+            font-family: "Manrope", sans-serif;
+            background-attachment: fixed;
         }
         .title {
             display: flex; align-items: center; justify-content: center;
             font-size: clamp(4rem, 10vw, 7rem); font-weight: 700;
             opacity: 0; animation: fadeIn 1.5s ease-out forwards;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: text-shadow 0.3s ease-in-out;
+        }
+        .title:hover {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.4);
         }
         .im { font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 500; margin-right: 10px; }
         .button-container {
@@ -37,24 +34,31 @@
             background: rgba(30, 30, 46, 0.8); color: #fff; font-size: clamp(1.2rem, 3vw, 1.4rem);
             padding: 16px 32px; border: none; border-radius: 30px; cursor: pointer;
             text-decoration: none; transition: all 0.3s ease; min-width: 200px; text-align: center;
-            backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 50%;
+            width: 300%; height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.4s ease-in-out;
+        }
+        .button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
         }
         .button:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (max-width: 768px) {
-            .title { font-size: clamp(3.5rem, 9vw, 5.5rem); }
-            .im { font-size: clamp(3rem, 8vw, 4.5rem); }
             .button-container { flex-direction: column; align-items: center; }
             .button { width: 100%; font-size: 1.5rem; padding: 20px; max-width: 300px; margin: 10px 0; }
-        }
-        @media (max-width: 480px) {
-            .title { font-size: clamp(3rem, 8vw, 5rem); }
-            .im { font-size: clamp(3rem, 8vw, 4rem); }
-            .button { padding: 18px 36px; font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -79,15 +83,6 @@
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && ['c', 'v'].includes(e.key)) e.preventDefault();
         });
-
-        if (window.innerWidth > 768) {
-            document.addEventListener('mousemove', e => {
-                const title = document.getElementById('title');
-                const x = (e.clientX / window.innerWidth - 0.5) * 15;
-                const y = (e.clientY / window.innerHeight - 0.5) * 15;
-                title.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        }
     </script>
 </body>
 </html>
