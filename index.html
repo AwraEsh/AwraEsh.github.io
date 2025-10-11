@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>A💀rash</title>
-    
+    <title>Ayoo!!!</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
         body {
-            background: radial-gradient(circle at top, #1e1e2e, #12121b);
+            background: linear-gradient(45deg, #0a0a0f, #0f0f1a, #15152b, #1a1a2e);
+            background-size: 400% 400%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            height: 100vh; width: 100vw; color: #e0e0e0; text-align: center;
-            padding: 10px; overflow: hidden; backdrop-filter: blur(20px);
+            height: 100vh; color: #e0e0e0; text-align: center;
+            padding: 20px; overflow: hidden; backdrop-filter: blur(20px);
             font-family: "Manrope", sans-serif;
-            background-attachment: fixed;
+            animation: gradientShift 15s ease infinite;
         }
         .title {
             display: flex; align-items: center; justify-content: center;
@@ -22,9 +22,10 @@
             opacity: 0; animation: fadeIn 1.5s ease-out forwards;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             transition: text-shadow 0.3s ease-in-out;
+            margin-bottom: 30px;
         }
         .title:hover {
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
         }
         .im { font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 500; margin-right: 10px; }
         .button-container {
@@ -32,40 +33,55 @@
             flex-wrap: wrap;
         }
         .button {
-            background: rgba(30, 30, 46, 0.8); color: #fff; font-size: clamp(1.2rem, 3vw, 1.4rem);
+            background: rgba(20, 20, 35, 0.9); color: #fff; font-size: clamp(1.2rem, 3vw, 1.4rem);
             padding: 16px 32px; border: none; border-radius: 30px; cursor: pointer;
             text-decoration: none; transition: all 0.3s ease; min-width: 200px; text-align: center;
-            backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            flex: 0 1 auto;
+            backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative; overflow: hidden; flex: 0 1 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .button::before {
             content: "";
-            position: absolute;
-            top: 0; left: 50%;
+            position: absolute; top: 0; left: 50%;
             width: 300%; height: 300%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.4s ease-in-out;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%) scale(0); transition: transform 0.4s ease-in-out;
         }
-        .button:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
+        .button:hover::before { transform: translate(-50%, -50%) scale(1); }
         .button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+            background: rgba(40, 40, 60, 0.9); transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); border-color: rgba(255, 255, 255, 0.2);
+        }
+        .particles-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+        }
+        .particle {
+            position: absolute; width: 3px; height: 3px; border-radius: 50%;
+            animation: float 8s infinite linear;
+            background: rgba(150, 150, 220, 0.6);
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (max-width: 768px) {
             .button-container { flex-direction: column; align-items: center; }
-            .button { width: 100%; font-size: 1.5rem; padding: 20px; max-width: 300px; margin: 10px 0; }
+            .button { width: 100%; font-size: 1.3rem; padding: 18px; max-width: 280px; margin: 8px 0; }
         }
     </style>
 </head>
 <body>
-    <div class="title" id="title">
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="title">
         <span class="im">im</span><span class="awraesh">AwraEsh</span>
     </div>
     <div class="button-container">
@@ -74,18 +90,52 @@
         <a href="https://www.linkedin.com/in/arash-samimi-a8bb002b7/" class="button">My LinkedIn</a>
     </div>
     <script>
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 35; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (6 + Math.random() * 6) + 's';
+                particle.style.width = (2 + Math.random() * 2) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+        document.querySelectorAll('.button').forEach(button => {
+            let isHovering = false;
+            button.addEventListener('mousemove', (e) => {
+                if (!isHovering) return;
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const moveX = (x - centerX) * 0.1;
+                const moveY = (y - centerY) * 0.1;
+                button.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            });
+            button.addEventListener('mouseenter', () => isHovering = true);
+            button.addEventListener('mouseleave', () => {
+                isHovering = false;
+                button.style.transform = 'translate(0, 0) scale(1)';
+            });
+        });
         document.querySelectorAll('.button').forEach(btn => {
             btn.addEventListener('click', e => {
                 e.preventDefault();
-                if (navigator.vibrate) navigator.vibrate(100);
-                setTimeout(() => window.location.href = btn.href, 200);
+                if (navigator.vibrate) navigator.vibrate(50);
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = '', 150);
+                setTimeout(() => window.location.href = btn.href, 300);
             });
         });
-
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
-            if (e.ctrlKey && ['c', 'v'].includes(e.key)) e.preventDefault();
+            if (e.ctrlKey && ['c', 'v', 'u', 's'].includes(e.key.toLowerCase())) e.preventDefault();
         });
+        document.addEventListener('DOMContentLoaded', createParticles);
     </script>
 </body>
 </html>
