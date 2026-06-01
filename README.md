@@ -2,32 +2,33 @@
 
 **Live Site:** https://awraesh.github.io/
 
-## About Me
+## Who I Am
 
-Hi, I'm **Arash Samimi** — known online as **AwraEsh**.  
-I'm 17 years old, from **Razavi Khorasan, Iran**, and currently studying **Electronics** in the 11th grade at a technical-vocational school.
+I'm **Arash Samimi**, but I usually go by **AwraEsh** online.
 
-I enjoy working with:
+I'm 17, from **Razavi Khorasan, Iran**, and I study **Electronics** in the 11th grade at a ShahidModares technical-vocational school.
+
+I’m into:
 - Networking
 - Linux
 - Web development
 - Arduino
-- ESP-based projects such as **ESP8266** and **ESP32**
+- ESP projects like **ESP8266** and **ESP32** boards.
 
-I'm also interested in building heavier, mixed projects where multiple devices work together on a local network.
+I like learning how devices can work together in one local network and building bigger, mixed projects instead of only small standalone ones.
 
-## About This Page
+## What This Page Is
 
-This personal page is here so people can quickly learn a bit more about me and find my links in one place.
+This page is my personal homepage.  
+It exists so people can know me a little better and find my links easily.
 
 ## Links
 
-- Website: https://awraesh.github.io/
 - Telegram: https://t.me/imAwraEsh
 - GitHub: https://github.com/awraesh
 - LinkedIn: https://www.linkedin.com/in/awraesh
 - Email: AwraEsh@gmail.com
 
-## Status
+## What I'm Doing Now
 
-Currently learning and building projects in electronics, networking, Linux, and embedded systems.
+Learning electronics, getting better at networking, using Linux daily, and building more serious embedded and ESP-based projects.
