@@ -1,145 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ayoo!!!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
-        body {
-            background: linear-gradient(45deg, #0a0a0f, #0f0f1a, #15152b, #1a1a2e);
-            background-size: 400% 400%;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            height: 100vh; color: #e0e0e0; text-align: center;
-            padding: 20px; overflow: hidden; backdrop-filter: blur(20px);
-            font-family: 'Poppins', sans-serif;
-            animation: gradientShift 15s ease infinite;
-        }
-        .title {
-            display: flex; align-items: center; justify-content: center;
-            font-size: clamp(6rem, 15vw, 12rem); font-weight: 700;
-            opacity: 0; animation: fadeIn 1.5s ease-out forwards;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: text-shadow 0.3s ease-in-out;
-            margin-bottom: 40px;
-            line-height: 1;
-        }
-        .title:hover {
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
-        }
-        .im { font-size: 0.6em; font-weight: 500; margin-right: 15px; }
-        .button-container {
-            display: flex; gap: 25px; margin-top: 40px; width: 100%; justify-content: center;
-            flex-wrap: wrap;
-        }
-        .button {
-            background: rgba(20, 20, 35, 0.9); color: #fff; font-size: clamp(1.2rem, 3vw, 1.4rem);
-            padding: 18px 36px; border: none; border-radius: 30px; cursor: pointer;
-            text-decoration: none; transition: all 0.3s ease; min-width: 220px; text-align: center;
-            backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: relative; overflow: hidden; flex: 0 1 auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .button::before {
-            content: "";
-            position: absolute; top: 0; left: 50%;
-            width: 300%; height: 300%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
-            transform: translate(-50%, -50%) scale(0); transition: transform 0.4s ease-in-out;
-        }
-        .button:hover::before { transform: translate(-50%, -50%) scale(1); }
-        .button:hover {
-            background: rgba(40, 40, 60, 0.9); transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); border-color: rgba(255, 255, 255, 0.2);
-        }
-        .particles-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1;
-        }
-        .particle {
-            position: absolute; width: 3px; height: 3px; border-radius: 50%;
-            animation: float 10s infinite linear;
-            background: rgba(150, 150, 220, 0.6);
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (max-width: 768px) {
-            .title { font-size: clamp(4rem, 10vw, 7rem); margin-bottom: 30px; }
-            .button-container { flex-direction: column; align-items: center; gap: 15px; }
-            .button { width: 100%; font-size: 1.3rem; padding: 18px; max-width: 280px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080b12" />
+  <meta name="description" content="AwraEsh — personal intro page" />
+  <title>AwraEsh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#080b12;
+      --bg2:#0d121d;
+      --text:#eef2f7;
+      --muted:rgba(238,242,247,.68);
+      --faint:rgba(238,242,247,.46);
+      --line:rgba(255,255,255,.09);
+      --line2:rgba(255,255,255,.05);
+      --accent:#8b5cf6;
+      --accent2:#22d3ee;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      min-height:100svh;
+      overflow:hidden;
+      color:var(--text);
+      font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(139,92,246,.16), transparent 22%),
+        radial-gradient(circle at 86% 14%, rgba(34,211,238,.10), transparent 18%),
+        radial-gradient(circle at 50% 120%, rgba(255,255,255,.05), transparent 28%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:58px 58px;
+      mask-image: radial-gradient(circle at center, black 32%, transparent 100%);
+    }
+
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
+      z-index:0;
+    }
+
+    .ambient{
+      position:fixed;
+      border-radius:50%;
+      filter:blur(70px);
+      pointer-events:none;
+      z-index:0;
+      opacity:.35;
+      animation: drift 12s ease-in-out infinite;
+    }
+    .ambient.a{ width:26vw; aspect-ratio:1; left:-7vw; top:-8vh; background:rgba(139,92,246,.48); }
+    .ambient.b{ width:20vw; aspect-ratio:1; right:-5vw; bottom:-8vh; background:rgba(34,211,238,.28); animation-duration:15s; }
+
+    .page{
+      position:relative;
+      z-index:1;
+      min-height:100svh;
+      display:grid;
+      grid-template-columns:minmax(0,1.32fr) minmax(280px,.68fr);
+      gap: clamp(24px, 5vw, 72px);
+      align-items:center;
+      padding: clamp(18px, 4vw, 54px);
+    }
+
+    .left{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      min-width:0;
+      max-width: 56rem;
+      padding-right: clamp(0px, 1vw, 12px);
+    }
+
+    .eyebrow{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(.95rem, 1.8vw, 1.05rem);
+      letter-spacing:.02em;
+      user-select:none;
+      line-height:1;
+    }
+
+    .hero{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      margin-top: 2px;
+      min-width:0;
+    }
+
+    h1{
+      margin:0;
+      line-height:.80;
+      letter-spacing:-.09em;
+      font-size: clamp(5.6rem, 14vw, 10.5rem);
+      font-family:"Cormorant Garamond","Times New Roman",serif;
+      font-weight:700;
+      text-wrap: balance;
+    }
+
+    .name{
+      display:inline-block;
+      color:#f5f2ea;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.08),
+        0 0 28px rgba(139,92,246,.12);
+      transform-origin:left center;
+      transform: translateZ(0);
+      letter-spacing:-.08em;
+    }
+
+    .sub{
+      margin: 0;
+      max-width: 34rem;
+      color:var(--muted);
+      font-size: clamp(1rem, 1.9vw, 1.1rem);
+      line-height:1.8;
+    }
+
+    .right{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    .links{
+      width:min(100%, 380px);
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      gap: 8px;
+      padding-top: 6px;
+    }
+
+    .links-label{
+      margin:0 0 8px 0;
+      color:var(--faint);
+      font-size:.82rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      user-select:none;
+    }
+
+    .link{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      min-height: 54px;
+      padding: 15px 16px 15px 0;
+      color:var(--text);
+      text-decoration:none;
+      border-bottom: 1px solid var(--line2);
+      transition:
+        transform .26s cubic-bezier(.2,.8,.2,1),
+        opacity .26s cubic-bezier(.2,.8,.2,1),
+        color .26s ease,
+        border-color .26s ease,
+        padding-left .26s cubic-bezier(.2,.8,.2,1);
+      will-change: transform, opacity;
+      user-select:none;
+      outline:none;
+    }
+
+    .link .text{
+      font-size: clamp(1.02rem, 1.8vw, 1.08rem);
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+
+    .link .arrow{
+      flex:none;
+      opacity:.55;
+      transform: translateX(0);
+      transition: transform .26s cubic-bezier(.2,.8,.2,1), opacity .26s ease;
+    }
+
+    .link::before{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-1px;
+      width:0%;
+      height:1px;
+      background: linear-gradient(90deg, rgba(255,255,255,.75), transparent);
+      transition: width .26s ease;
+    }
+
+    .link:hover,
+    .link:focus-visible{
+      transform: translateX(10px) scale(1.03);
+      opacity:1;
+      color:#fff;
+      border-color: rgba(255,255,255,.14);
+    }
+
+    .link:hover::before,
+    .link:focus-visible::before{
+      width: 100%;
+    }
+
+    .link:hover .arrow,
+    .link:focus-visible .arrow{
+      opacity:.95;
+      transform: translateX(2px);
+    }
+
+    .link.primary{
+      padding-left: 0;
+    }
+
+    .link.primary .text{
+      font-weight:700;
+    }
+
+    .links.is-hovering .link.dim{
+      opacity:.34;
+      transform: translateX(4px);
+    }
+
+    .links.is-hovering .link.dim .arrow{
+      opacity:.25;
+    }
+
+    .links.is-hovering .link.active{
+      opacity:1;
+      transform: translateX(12px) scale(1.045);
+    }
+
+    @keyframes drift{
+      0%,100%{ transform:translate3d(0,0,0) scale(1); }
+      50%{ transform:translate3d(0,12px,0) scale(1.03); }
+    }
+
+    @media (max-width: 1040px){
+      body{ overflow:auto; }
+      .page{
+        grid-template-columns:1fr;
+        align-items:start;
+        gap: 18px;
+      }
+      .right{
+        justify-content:flex-start;
+      }
+      .links{
+        width:100%;
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 720px){
+      .page{
+        padding: 22px 16px 20px;
+        gap: 22px;
+      }
+      .left{
+        width:100%;
+        max-width:none;
+        align-items:center;
+        text-align:center;
+        padding-right:0;
+        margin-top: 8px;
+      }
+      .eyebrow{
+        font-size:.9rem;
+        margin-bottom: 2px;
+      }
+      .hero{
+        align-items:center;
+        gap: 10px;
+        margin-top: 0;
+      }
+      h1{
+        font-size: clamp(4.15rem, 22vw, 6rem);
+        line-height:.84;
+      }
+      .sub{
+        max-width: 28rem;
+        line-height:1.72;
+        font-size: .98rem;
+      }
+      .right{
+        width:100%;
+        justify-content:center;
+      }
+      .links{
+        max-width:none;
+        width:min(100%, 30rem);
+        padding-top: 8px;
+        gap: 6px;
+      }
+      .links-label{
+        text-align:center;
+        margin-bottom: 6px;
+        font-size:.78rem;
+      }
+      .link{
+        min-height: 50px;
+        padding: 14px 10px 14px 0;
+      }
+      .link .text{
+        font-size: 1rem;
+      }
+      .link:hover,
+      .link:focus-visible{
+        transform: translateX(6px) scale(1.02);
+      }
+      .links.is-hovering .link.dim{
+        transform: translateX(2px);
+      }
+      .links.is-hovering .link.active{
+        transform: translateX(8px) scale(1.02);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="particles-container" id="particlesContainer"></div>
-    <div class="title">
-        <span class="im">im</span><span class="awraesh">AwraEsh</span>
-    </div>
-    <div class="button-container">
-        <a href="https://t.me/CallMe_Aw" class="button">My Telegram</a>
-        <a href="mailto:AwraEsh@gmail.com" class="button">My E-Mail</a>
-        <a href="https://www.linkedin.com/in/awraesh" class="button">My LinkedIn</a>
-    </div>
-    <script>
-        function createParticles() {
-            const container = document.getElementById('particlesContainer');
-            for (let i = 0; i < 35; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (8 + Math.random() * 8) + 's';
-                particle.style.width = (2 + Math.random() * 2) + 'px';
-                particle.style.height = particle.style.width;
-                container.appendChild(particle);
-            }
-        }
-        document.querySelectorAll('.button').forEach(button => {
-            let isHovering = false;
-            button.addEventListener('mousemove', (e) => {
-                if (!isHovering) return;
-                const rect = button.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const moveX = (x - centerX) * 0.1;
-                const moveY = (y - centerY) * 0.1;
-                button.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-            });
-            button.addEventListener('mouseenter', () => isHovering = true);
-            button.addEventListener('mouseleave', () => {
-                isHovering = false;
-                button.style.transform = 'translate(0, 0) scale(1)';
-            });
-        });
-        document.querySelectorAll('.button').forEach(btn => {
-            btn.addEventListener('click', e => {
-                e.preventDefault();
-                if (navigator.vibrate) navigator.vibrate(50);
-                btn.style.transform = 'scale(0.95)';
-                setTimeout(() => btn.style.transform = '', 150);
-                setTimeout(() => window.location.href = btn.href, 300);
-            });
-        });
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && ['c', 'v', 'u', 's'].includes(e.key.toLowerCase())) e.preventDefault();
-        });
-        document.addEventListener('DOMContentLoaded', createParticles);
-    </script>
+  <div class="noise"></div>
+  <div class="ambient a"></div>
+  <div class="ambient b"></div>
+
+  <main class="page" aria-label="AwraEsh intro page">
+    <section class="left">
+      <p class="eyebrow">Hey, my name is</p>
+
+      <div class="hero">
+        <h1><span class="name">Arash Samimi ,</span></h1>
+        <p class="sub">a 17 y.o. Electronics student, project builder, and someone who use linux as his main OS lol.</p>
+      </div>
+    </section>
+
+    <aside class="right" aria-label="Quick links">
+      <nav class="links" id="links">
+        <p class="links-label">Contact me!</p>
+        <a class="link primary" href="https://t.me/imAwraEsh" target="_blank" rel="noopener noreferrer">
+          <span class="text">Telegram</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link" href="https://github.com/awraesh" target="_blank" rel="noopener noreferrer">
+          <span class="text">GitHub</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link" href="mailto:AwraEsh@gmail.com">
+          <span class="text">Email</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link" href="https://www.linkedin.com/in/awraesh" target="_blank" rel="noopener noreferrer">
+          <span class="text">LinkedIn</span>
+          <span class="arrow">↗</span>
+        </a>
+      </nav>
+    </aside>
+  </main>
+
+  <script>
+    const links = document.getElementById('links');
+    const items = Array.from(document.querySelectorAll('.link'));
+
+    const setState = (item) => {
+      links.classList.add('is-hovering');
+      items.forEach((el) => el.classList.remove('active', 'dim'));
+      item.classList.add('active');
+      items.forEach((el) => {
+        if (el !== item) el.classList.add('dim');
+      });
+    };
+
+    const clearState = () => {
+      links.classList.remove('is-hovering');
+      items.forEach((el) => el.classList.remove('active', 'dim'));
+    };
+
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => setState(item));
+      item.addEventListener('focus', () => setState(item));
+      item.addEventListener('mouseleave', clearState);
+      item.addEventListener('blur', clearState);
+      item.addEventListener('click', () => {
+        if (navigator.vibrate) navigator.vibrate(20);
+      });
+    });
+
+    links.addEventListener('mouseleave', clearState);
+  </script>
 </body>
 </html>
-
-
